@@ -10,13 +10,12 @@ echo "[default]
 aws_access_key_id = ${AWS_ACCESS_KEY_ID}
 aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" > ~/.aws/credentials
 
-# comando per aggiornare layer 
-aws lambda publish-layer-version \
-  --layer-name ${LAYER_NAME} \
-  --license-info "MIT" \
-  --content S3Bucket=${S3_BUCKET},S3Key=${S3_KEY} \
-  --region ${AWS_REGION} \
-  --compatible-runtimes python3.6 python3.7 python3.8 python3.9
+# comando per assegnare layer alla funzione lambda
+
+aws lambda update-function-configuration \
+  --function-name ${LAYER_NAME} \
+  --layers ${AWS_LAMBDA_ARN} \
+  --region ${AWS_REGION}
 
 rm -rf ~/.aws
 
