@@ -1,5 +1,5 @@
-name: "lambda create layer"
-description: "Create lambda layer"
+name: "assign layer to lambda function"
+description: "Assign layer to lambda function"
 author: "YouPrice"
 runs:
   using: docker
